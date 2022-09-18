@@ -274,6 +274,25 @@ Periferico</string>
 Perifericos</string>
    </property>
   </widget>
+  <widget class="QPushButton" name="DetallesHardware">
+   <property name="geometry">
+    <rect>
+     <x>640</x>
+     <y>130</y>
+     <width>161</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>14</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Detalles 
+Hardware</string>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections/>
