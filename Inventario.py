@@ -35,7 +35,7 @@ class Inventario(QMainWindow):
         self.inv = Inventario_Hardware()
         self.inv.exec_()
     
-
+ 
 
 
 if __name__ == "__main__":
