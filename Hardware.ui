@@ -421,6 +421,9 @@ QDialog{
      </property>
     </widget>
     <widget class="QComboBox" name="Video_Mother">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>200</x>
@@ -1524,7 +1527,7 @@ QDialog{
       </font>
      </property>
     </widget>
-    <widget class="QLineEdit" name="Modelo_Case">
+    <widget class="QLineEdit" name="c">
      <property name="geometry">
       <rect>
        <x>170</x>

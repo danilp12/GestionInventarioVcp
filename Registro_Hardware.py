@@ -56,8 +56,9 @@ class Registro_Hardware(QDialog):
         audio = self.Audio_Mother.currentText()
         garantia = self.Garantia_Mother.text()
         fecha = self.Fecha_Mother.date().toString()
-        print(tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha)
-        if guardarMother(tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
+        estado = "Sin Asignar"
+        print(tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha,estado)
+        if guardarMother(tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha,estado):
             QMessageBox.information(self,"Guardar","Motherboard Guardada Correctamente")
             self.close()
         else:
@@ -70,8 +71,14 @@ class Registro_Hardware(QDialog):
         frecuencia = self.Frecuencia_Ram.text()
         serie = self.Serie_Ram.text()
         garantia = self.Garantia_Ram.text()
-        fecha = self.Fecha_Ram.date()
-        print(tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha)
+        fecha = self.Fecha_Ram.date().toString()
+        estado = "Sin Asignar"
+        print(tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha,estado)
+        if guardarRam(tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha,estado):
+            QMessageBox.information(self,"Guardar","Ram Guardada Correctamente")
+            self.close()
+        else:
+            QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
     def cpu(self):
         tipohard = "CPU"
         marca = self.Marca_Cpu.text()
@@ -83,8 +90,12 @@ class Registro_Hardware(QDialog):
         cache = self.Cache_Cpu.text()
         serie = self.Serie_Cpu.text()
         garantia = self.Garantia_Cpu.text()
-        fecha = self.Fecha_Cpu.date()
-        print(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha)
+        fecha = self.Fecha_Cpu.date().toString()
+        estado = "Sin Asignar"
+        print(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha,estado)
+        if guardarCpu(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha,estado):
+            QMessageBox.information(self,"Guardar","Cpu Guardada Correctamente")
+            self.close()
     def fuente(self):
         tipohard = "Fuente"
         marca = self.Marca_Fuente.text()
@@ -94,16 +105,24 @@ class Registro_Hardware(QDialog):
         voltaje = self.Voltaje_Fuente.currentText()
         serie = self.Serie_Fuente.text()
         garantia = self.Garantia_Fuente.text()
-        fecha = self.Fecha_Fuente.date()
-        print(tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha)
+        fecha = self.Fecha_Fuente.date().toString()
+        estado = "Sin Asignar"
+        print(tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha,estado)
+        if guardarFuente(tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha,estado):
+            QMessageBox.information(self,"Guardar","Fuente Guardada Correctamente")
+            self.close()
     def case(self):
         tipohard = "Case"
         marca = self.Marca_Case.text()
         modelo = self.Marca_Case.text()
         serie = self.Serie_Case.text()
         garantia = self.Garantia_Case.text()
-        fecha = self.Fecha_Case.date()
-        print(tipohard,marca,modelo,serie,garantia,fecha)
+        fecha = self.Fecha_Case.date().toString()
+        estado = "Sin Asignar"
+        print(tipohard,marca,modelo,serie,garantia,fecha,estado)
+        if guardarCase(tipohard,marca,modelo,serie,garantia,fecha,estado):
+            QMessageBox.information(self,"Guardar","Case Guardado Correctamente")
+            self.close()
     def disco(self):
         tipohard = "Disco"
         marca = self.Marca_Disco.text()
@@ -114,5 +133,9 @@ class Registro_Hardware(QDialog):
         buffer = self.Buffer_Disco.text()
         serie = self.Serie_Disco.text()
         garantia = self.Garantia_Disco.text()
-        fecha = self.Fecha_Disco.date()
-        print(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha)
+        fecha = self.Fecha_Disco.date().toString()
+        estado = "Sin Asignar"
+        print(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha,estado)
+        if guardarDisco(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha,estado):
+            QMessageBox.information(self,"Guardar","Disco Guardado Correctamente")
+            self.close()

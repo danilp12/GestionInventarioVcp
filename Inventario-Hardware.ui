@@ -142,7 +142,7 @@ Hardware</string>
     </property>
     <column>
      <property name="text">
-      <string>ID</string>
+      <string>ID Hardware</string>
      </property>
     </column>
     <column>
@@ -190,7 +190,7 @@ Hardware</string>
     </property>
     <column>
      <property name="text">
-      <string>ID</string>
+      <string>ID Hardware</string>
      </property>
     </column>
     <column>
