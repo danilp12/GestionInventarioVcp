@@ -1,7 +1,7 @@
 
-import re
 import sqlite3
 from datetime import datetime as dt
+from statistics import mode
 from PyQt5.QtCore import QDate
 
 def conexion():
@@ -54,12 +54,24 @@ def guardarDisco(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,ga
     conexion.close()
     print("Disco Guardado")
     return True
-def guardarPeriferico(Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion):
+def guardarPeriferico(Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion,estado):
     conexion = sqlite3.connect('Inventario.db')
     cursor = conexion.cursor()
-    cursor.execute('INSERT INTO Perifericos (Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion) VALUES (?,?,?,?,?,?)',(Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion))
+    cursor.execute('INSERT INTO Perifericos (Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion,Estado) VALUES (?,?,?,?,?,?,?)',(Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion,estado))
     conexion.commit()
     conexion.close()
+
+#   Actualizacion de Datos
+def modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
+    conexion = sqlite3.connect('Inventario.db')
+    conexion.execute(f"Update Motherboard set marca='{marca}' ,modelo='{modelo}',chipset='{chipset}',socket='{socket}',serie='{serie}',video='{video}',audio='{audio}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}' where ID={cod}" )
+    conexion.commit()
+    conexion.close()
+    print("Mother Guardada")
+    return True
+
+
+
 def instanciarbd():
     conexion = sqlite3.connect('Inventario.db')
     cursor = conexion.cursor()

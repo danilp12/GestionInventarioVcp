@@ -27,6 +27,7 @@ class Registro_Hardware(QDialog):
         self.TipoDisco.addItems(['SSD','HDD','M2','Otro'])
         self.Guardar.clicked.connect(self.guardar)
         self.Cancelar.clicked.connect(self.cancelar)
+        
     def cambiar(self,tipo):
         self.stackedW.setCurrentIndex(tipo)
     def cancelar(self):
@@ -35,6 +36,20 @@ class Registro_Hardware(QDialog):
         posicion = self.stackedW.currentIndex()
         if posicion == 0:
             self.mother()
+        elif posicion == 1:
+            self.ram()
+        elif posicion == 2:
+            self.cpu()
+        elif posicion == 3:
+            self.fuente()
+        elif posicion == 4:
+            self.case()
+        elif posicion == 5:
+            self.disco()
+    def actualizar(self,cod):
+        posicion = self.stackedW.currentIndex()
+        if posicion == 0:
+            self.actualizarMother(cod)
         elif posicion == 1:
             self.ram()
         elif posicion == 2:
@@ -63,6 +78,20 @@ class Registro_Hardware(QDialog):
             self.close()
         else:
             QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
+    def actualizarMother(self,cod):
+        tipohard = "Motherboard"
+        marca = self.Marca_Mother.text()
+        modelo = self.Modelo_Mother.text()
+        chipset = self.Chipset_Mother.text()
+        socket = self.Socket_Mother.text()
+        serie = self.Serie_Mother.text()
+        video = self.Video_Mother.currentText()
+        audio = self.Audio_Mother.currentText()
+        garantia = self.Garantia_Mother.text()
+        fecha = self.Fecha_Mother.date().toString()
+        if modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
+            self.close()
     def ram(self):
         tipohard = "Ram"
         marca = self.Marca_Ram.text()
