@@ -22,8 +22,8 @@ class Registro_Perifericos(QDialog):
         self.TipoConexion.addItems(['USB','Paralelo','Serial','Wifi','Bluetooth','Otro'])
         
     def guardar(self):
-        
-        guardarPeriferico(self.Nombre.text(),self.Modelo.text(),self.TipoPeriferico.currentText(),self.Serie.text(),self.Voltaje.currentText(),self.TipoConexion.currentText())
+        estado = "Sin Asignar"
+        guardarPeriferico(self.Nombre.text(),self.Modelo.text(),self.TipoPeriferico.currentText(),self.Serie.text(),self.Voltaje.currentText(),self.TipoConexion.currentText(),estado)
         
         self.close()
     def cancelar(self):

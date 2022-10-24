@@ -149,7 +149,7 @@ QDialog{
     </rect>
    </property>
    <property name="currentIndex">
-    <number>0</number>
+    <number>4</number>
    </property>
    <widget class="QWidget" name="pageMother">
     <property name="enabled">
@@ -421,6 +421,9 @@ QDialog{
      </property>
     </widget>
     <widget class="QComboBox" name="Video_Mother">
+     <property name="enabled">
+      <bool>true</bool>
+     </property>
      <property name="geometry">
       <rect>
        <x>200</x>
@@ -1954,6 +1957,28 @@ QDialog{
    </property>
    <property name="text">
     <string>Cancelar</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Modificar">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>10</x>
+     <y>300</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Mongolian Baiti</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Modificar</string>
    </property>
   </widget>
  </widget>
