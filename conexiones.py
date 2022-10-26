@@ -67,7 +67,15 @@ def modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garanti
     conexion.execute(f"Update Motherboard set marca='{marca}' ,modelo='{modelo}',chipset='{chipset}',socket='{socket}',serie='{serie}',video='{video}',audio='{audio}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}' where ID={cod}" )
     conexion.commit()
     conexion.close()
-    print("Mother Guardada")
+    print("Mother Actualizada")
+    return True
+
+def modRam(cod, tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha,estado):
+    conexion = sqlite3.connect('Inventario.db')
+    conexion.execute(f"Update Ram set marca='{marca}' ,modelo='{modelo}',capacidad='{capacidad}',frecuencia='{frecuencia}',serie='{serie}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}',estado='{estado}' where ID={cod}" )
+    conexion.commit()
+    conexion.close()
+    print("Ram Actualizada")
     return True
 
 
