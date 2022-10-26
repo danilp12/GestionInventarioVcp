@@ -64,15 +64,15 @@ def guardarPeriferico(Nombre,Modelo,TipoPeriferico,Serie,Voltaje,TipoConexion,es
 #   Actualizacion de Datos
 def modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
     conexion = sqlite3.connect('Inventario.db')
-    conexion.execute(f"Update Motherboard set marca='{marca}' ,modelo='{modelo}',chipset='{chipset}',socket='{socket}',serie='{serie}',video='{video}',audio='{audio}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}' where ID={cod}" )
+    conexion.execute(f"Update Motherboard set marca='{marca}' ,modelo='{modelo}',chipset='{chipset}',socket='{socket}',serie='{serie}',video='{video}',audio='{audio}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}' where ID={cod}")
     conexion.commit()
     conexion.close()
     print("Mother Actualizada")
     return True
 
-def modRam(cod, tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha,estado):
+def modRam(cod,tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha):
     conexion = sqlite3.connect('Inventario.db')
-    conexion.execute(f"Update Ram set marca='{marca}' ,modelo='{modelo}',capacidad='{capacidad}',frecuencia='{frecuencia}',serie='{serie}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}',estado='{estado}' where ID={cod}" )
+    conexion.execute(f"Update Ram set marca='{marca}' ,modelo='{modelo}',capacidad='{capacidad}',frecuencia='{frecuencia}',serie='{serie}',garantia='{garantia}',fecha='{fecha}',TipoHardware='{tipohard}' where ID={cod}")
     conexion.commit()
     conexion.close()
     print("Ram Actualizada")

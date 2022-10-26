@@ -51,7 +51,7 @@ class Registro_Hardware(QDialog):
         if posicion == 0:
             self.actualizarMother(cod)
         elif posicion == 1:
-            self.ram()
+            self.actualizarRam(cod)
         elif posicion == 2:
             self.cpu()
         elif posicion == 3:
@@ -92,6 +92,7 @@ class Registro_Hardware(QDialog):
         if modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
             self.close()
+
     def ram(self):
         tipohard = "Ram"
         marca = self.Marca_Ram.text()
@@ -108,6 +109,19 @@ class Registro_Hardware(QDialog):
             self.close()
         else:
             QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
+    def actualizarRam(self, cod):
+        tipohard = "Ram"
+        marca = self.Marca_Ram.text()
+        modelo = self.Modelo_Ram.text()
+        capacidad = self.Capacidad_Ram.text()
+        frecuencia = self.Frecuencia_Ram.text()
+        serie = self.Serie_Ram.text()
+        garantia = self.Garantia_Ram.text()
+        fecha = self.Fecha_Ram.date().toString()
+        if modRam(cod,tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
+            self.close()
+
     def cpu(self):
         tipohard = "CPU"
         marca = self.Marca_Cpu.text()
