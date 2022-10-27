@@ -42,7 +42,7 @@ def guardarFuente(tipohard,marca,modelo,potencia,certificacion,voltaje,serie,gar
     return True
 def guardarCase(tipohard,marca,modelo,serie,garantia,fecha,estado):
     conexion = sqlite3.connect('Inventario.db')
-    conexion.execute("insert into 'Case' (marca,modelo,serie,garantia,fecha,TipoHardware,Estado) VALUES(?,?,?,?,?,?,?)",(marca,modelo,serie,garantia,fecha,tipohard,estado))
+    conexion.execute("INSERT INTO 'Case' (marca,modelo,serie,garantia,fecha,TipoHardware,Estado) VALUES(?,?,?,?,?,?,?)",(marca,modelo,serie,garantia,fecha,tipohard,estado))
     conexion.commit()
     conexion.close()
     print("Case Guardado")
@@ -78,7 +78,39 @@ def modRam(cod,tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha):
     print("Ram Actualizada")
     return True
 
+def modCPU(cod,tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha):
+    conexion = sqlite3.connect('Inventario.db')
+    conexion.execute(f"Update Cpu set TipoHardware='{tipohard}', marca='{marca}', modelo='{modelo}', nucleos='{nucleo}', hilos='{hilos}',frecuencia='{frecuencia}', socket='{socket}',cache='{cache}',serie='{serie}',garantia='{garantia}',fecha='{fecha}' where ID={cod}")
+    conexion.commit()
+    conexion.close()
+    print("Cpu Actualizado")
+    return True
 
+
+def modFuente(cod,tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha):
+    conexion = sqlite3.connect('Inventario.db')
+    conexion.execute(f"Update Fuente set TipoHardware='{tipohard}',marca='{marca}',modelo='{modelo}',potencia='{potencia}',certificacion='{certificacion}',voltaje='{voltaje}',serie='{serie}',garantia='{garantia}',fecha='{fecha}' where ID='{cod}'")
+    conexion.commit()
+    conexion.close()
+    print("Fuente Actualizado")
+    return True
+    
+def modCase(cod,tipohard,marca,modelo,serie,garantia,fecha):
+    conexion = sqlite3.connect('Inventario.db')
+    conexion.execute(f"Update 'Case' set TipoHardware='{tipohard}',marca='{marca}',modelo='{modelo}',serie='{serie}',garantia='{garantia}',fecha='{fecha}' where ID='{cod}'")
+    conexion.commit()
+    conexion.close()
+    print("Case Actualizado")
+    return True
+    
+def modDisco(cod,tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha):
+    conexion = sqlite3.connect('Inventario.db')
+    conexion.execute(f"Update Disco set TipoHardware='{tipohard}',marca='{marca}',modelo='{modelo}',capacidad='{capacidad}',tipodisco='{tipodisco}',cache='{cache}',buffer='{buffer}',serie='{serie}', garantia='{garantia}',fecha='{fecha}' where ID='{cod}'")
+    conexion.commit()
+    conexion.close()
+    print("Disco Actualizado")
+    return True
+    
 
 def instanciarbd():
     conexion = sqlite3.connect('Inventario.db')
