@@ -51,15 +51,15 @@ class Registro_Hardware(QDialog):
         if posicion == 0:
             self.actualizarMother(cod)
         elif posicion == 1:
-            self.ram()
+            self.actualizarRam(cod)
         elif posicion == 2:
-            self.cpu()
+            self.actualizarCpu(cod)
         elif posicion == 3:
-            self.fuente()
+            self.actualizarFuente(cod)
         elif posicion == 4:
-            self.case()
+            self.actualizarCase(cod)
         elif posicion == 5:
-            self.disco()
+            self.actualizarDisco(cod)
     def mother(self):
         tipohard = "Motherboard"
         marca = self.Marca_Mother.text()
@@ -78,20 +78,7 @@ class Registro_Hardware(QDialog):
             self.close()
         else:
             QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
-    def actualizarMother(self,cod):
-        tipohard = "Motherboard"
-        marca = self.Marca_Mother.text()
-        modelo = self.Modelo_Mother.text()
-        chipset = self.Chipset_Mother.text()
-        socket = self.Socket_Mother.text()
-        serie = self.Serie_Mother.text()
-        video = self.Video_Mother.currentText()
-        audio = self.Audio_Mother.currentText()
-        garantia = self.Garantia_Mother.text()
-        fecha = self.Fecha_Mother.date().toString()
-        if modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
-            QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
-            self.close()
+
     def ram(self):
         tipohard = "Ram"
         marca = self.Marca_Ram.text()
@@ -108,6 +95,7 @@ class Registro_Hardware(QDialog):
             self.close()
         else:
             QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
+
     def cpu(self):
         tipohard = "CPU"
         marca = self.Marca_Cpu.text()
@@ -125,6 +113,8 @@ class Registro_Hardware(QDialog):
         if guardarCpu(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha,estado):
             QMessageBox.information(self,"Guardar","Cpu Guardada Correctamente")
             self.close()
+
+        
     def fuente(self):
         tipohard = "Fuente"
         marca = self.Marca_Fuente.text()
@@ -168,3 +158,93 @@ class Registro_Hardware(QDialog):
         if guardarDisco(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha,estado):
             QMessageBox.information(self,"Guardar","Disco Guardado Correctamente")
             self.close()
+
+
+#Modificaciones
+
+    def actualizarMother(self,cod):
+        tipohard = "Motherboard"
+        marca = self.Marca_Mother.text()
+        modelo = self.Modelo_Mother.text()
+        chipset = self.Chipset_Mother.text()
+        socket = self.Socket_Mother.text()
+        serie = self.Serie_Mother.text()
+        video = self.Video_Mother.currentText()
+        audio = self.Audio_Mother.currentText()
+        garantia = self.Garantia_Mother.text()
+        fecha = self.Fecha_Mother.date().toString()
+        if modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
+            self.close()
+
+    def actualizarRam(self, cod):
+        tipohard = "Ram"
+        marca = self.Marca_Ram.text()
+        modelo = self.Modelo_Ram.text()
+        capacidad = self.Capacidad_Ram.text()
+        frecuencia = self.Frecuencia_Ram.text()
+        serie = self.Serie_Ram.text()
+        garantia = self.Garantia_Ram.text()
+        fecha = self.Fecha_Ram.date().toString()
+        if modRam(cod,tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Ram Actualizada")
+            self.close()
+
+    def actualizarCpu(self, cod):
+        tipohard = "CPU"
+        marca = self.Marca_Cpu.text()
+        modelo = self.Modelo_Cpu.text()
+        nucleo = self.Nucleos_Cpu.text()
+        hilos = self.Hilos_Cpu.text()
+        frecuencia = self.Frecuencia_Cpu.text()
+        socket = self.Socket_Cpu.text()
+        cache = self.Cache_Cpu.text()
+        serie = self.Serie_Cpu.text()
+        garantia = self.Garantia_Cpu.text()
+        fecha = self.Fecha_Cpu.date().toString()   
+        if modCPU(cod, tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Cpu Actualizado")
+            self.close()
+
+
+    def actualizarFuente(self, cod):
+        tipohard = "Fuente"
+        marca = self.Marca_Fuente.text()
+        modelo = self.Modelo_Fuente.text()
+        potencia = self.Potencia_Fuente.text()
+        certificacion = self.Certificacion_Fuente.currentText()
+        voltaje = self.Voltaje_Fuente.currentText()
+        serie = self.Serie_Fuente.text()
+        garantia = self.Garantia_Fuente.text()
+        fecha = self.Fecha_Fuente.date().toString()
+        if modFuente(cod, tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Fuente Actualizado")
+            self.close()
+
+    def actualizarCase(self, cod):
+        tipohard = "Case"
+        marca = self.Marca_Case.text()
+        modelo = self.Marca_Case.text()
+        serie = self.Serie_Case.text()
+        garantia = self.Garantia_Case.text()
+        fecha = self.Fecha_Case.date().toString()
+        if modCase(cod, tipohard,marca,modelo,serie,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Case Actualizado")
+            self.close()
+
+    def actualizarDisco(self, cod):
+        tipohard = "Disco"
+        marca = self.Marca_Disco.text()
+        modelo = self.Modelo_Disco.text()
+        capacidad = self.Capacidad_Disco.text()
+        tipodisco = self.TipoDisco.currentText()
+        cache = self.Cache_Disco.text()
+        buffer = self.Buffer_Disco.text()
+        serie = self.Serie_Disco.text()
+        garantia = self.Garantia_Disco.text()
+        fecha = self.Fecha_Disco.date().toString()
+        if modDisco(cod, tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha):
+            QMessageBox.information(self,"Actualizar","Disco Actualizado Correctamente")
+            self.close()
+
+            
