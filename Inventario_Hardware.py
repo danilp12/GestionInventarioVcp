@@ -4,7 +4,6 @@ from PyQt5.QtWidgets import  QFileDialog, QInputDialog, QMainWindow, QWidget, QM
 from PyQt5.QtCore import QCoreApplication,QTimer,QElapsedTimer, QDate
 from PyQt5 import QtWidgets, uic
 from datetime import datetime as dt
-from Inventario_Perifericos import Inventario_Perifericos
 from Registro_Hardware import Registro_Hardware
 from conexiones import Cursor, conexion
 
@@ -14,17 +13,13 @@ class Inventario_Hardware(QDialog):
         uic.loadUi('Inventario-Hardware.ui',self)
         self.setWindowTitle('Inventario Hardware')
         self.setWindowIcon(QIcon('icon.png'))
-        self.ConsultarPerifericos.clicked.connect(self.consultar_perifericos)
         self.NuevoHardware.clicked.connect(self.nuevo_hardware)
         self.DetallesHardware.clicked.connect(self.detelle_hardware)
         self.EliminarHardware.clicked.connect(self.darbajahard)
         self.ModificarHardware.clicked.connect(self.modificar_hardware)
         self.cargarhard()
-        self.cargarperifericos()
-    def consultar_perifericos(self):
-        self.inv = Inventario_Perifericos()
-        self.inv.exec_()
-        self.cargarperifericos()
+    
+
     
             
             
@@ -232,18 +227,7 @@ class Inventario_Hardware(QDialog):
         self.reg = Registro_Hardware()
         self.reg.exec_()
         self.cargarhard()
-    def cargarperifericos(self):
-        cursor = Cursor()
-        cursor.execute("SELECT * FROM perifericos")
-        filas = cursor.fetchall()
-        self.TablaPerifericos.setRowCount(0)
-        for fila in filas:
-            self.TablaPerifericos.insertRow(self.TablaPerifericos.rowCount())
-            self.TablaPerifericos.setItem(self.TablaPerifericos.rowCount()-1,0,QTableWidgetItem(str(fila[0])))
-            self.TablaPerifericos.setItem(self.TablaPerifericos.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
-            self.TablaPerifericos.setItem(self.TablaPerifericos.rowCount()-1,2,QTableWidgetItem(str(fila[3])))
-            self.TablaPerifericos.setItem(self.TablaPerifericos.rowCount()-1,3,QTableWidgetItem(str(fila[4])))
-            self.TablaPerifericos.setItem(self.TablaPerifericos.rowCount()-1,4,QTableWidgetItem(str(fila[7])))
+    
 
     def cargarhard(self):
         cursor = Cursor()
