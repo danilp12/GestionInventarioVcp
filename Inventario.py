@@ -15,6 +15,7 @@ def hora ():
     return dt.now().strftime('%H:%M:%S')  
 
 
+
 class Inventario(QMainWindow):
     def __init__(self):
         QMainWindow.__init__(self)
