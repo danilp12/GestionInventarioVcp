@@ -6,7 +6,9 @@ from PyQt5 import QtWidgets, uic
 from datetime import datetime as dt
 import sys,sqlite3,os,pickle ,datetime, json
 from Inventario_Equipos import Inventario_Equipos
+from Inventario_Perifericos import Inventario_Perifericos
 from Inventario_Hardware import Inventario_Hardware
+from Reparaciones import Reparaciones
 
 timer = QTimer()
 def hora ():
@@ -23,6 +25,11 @@ class Inventario(QMainWindow):
         self.Hora.setText(self.actualizar_tiempo())
         self.Inventario_Equipos.clicked.connect(self.inv_equipos)
         self.Inventario_Hardware.clicked.connect(self.inv_hardware)
+        self.Inventario_Perifericos.clicked.connect(self.inv_perifericos)
+        self.Reparaciones.clicked.connect(self.reparaciones)
+    def reparaciones(self):
+        self.reparaciones = Reparaciones()
+        self.reparaciones.exec_()
     def actualizar_tiempo(self):
         timer.start(1000)
         timer.timeout.connect(self.set_tiempo)
@@ -34,8 +41,9 @@ class Inventario(QMainWindow):
     def inv_hardware(self):
         self.inv = Inventario_Hardware()
         self.inv.exec_()
-    
- 
+    def inv_perifericos(self):
+        self.inv = Inventario_Perifericos()
+        self.inv.exec_()
 
 
 if __name__ == "__main__":
