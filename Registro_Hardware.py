@@ -27,7 +27,57 @@ class Registro_Hardware(QDialog):
         self.TipoDisco.addItems(['SSD','HDD','M2','Otro'])
         self.Guardar.clicked.connect(self.guardar)
         self.Cancelar.clicked.connect(self.cancelar)
-        
+### CLASE Registro_Hardware (QDIALOG) 
+    ### ATRIBUTOS:
+    ###     -Mother (Boton)
+    ###     -Ram (Boton)
+    ###     -Cpu (Boton)
+    ###     -Fuente (Boton)
+    ###     -Case (Boton)
+    ###     -Disco (Boton)
+    ###     -Video_Mother (Boton)
+    ###     -Audio_Mother (Boton)
+    ###     -Certificacion_Fuente (Boton)
+    ###     -Voltaje_Fuente (Boton)
+    ###     -TipoDisco (ComboBox)
+    ###     -Guardar (Boton)
+    ###     -Cancelar (Boton)
+
+    ### METODOS:
+    ###     -cambiar:
+    #           funcion para cambiar las pantallas de hardware 
+    #       -cancelar:
+    #           funcion para cerrar la ventana
+    #       -guardar:
+    #           funcion para guardar el nuevo hardware
+    #           la funcion toma la posicion en la que se llenaron los datos e inserta en la tabla correspondiente
+    #       -actualizar:
+    #           funcion para actualizar los datos del hardware. esta funcion es parecida al de guardar, solo que hace un update en la base de datos
+    #       -mother:
+    #           funcion para guardar los datos en la BD
+    #       -ram:
+    #           funcion para guardar los datos en la BD
+    #       -cpu:
+    #           funcion para guardar los datos en la BD
+    #       -fuente:
+    #           funcion para guardar los datos en la BD
+    #       -case:
+    #           funcion para guardar los datos en la BD
+    #       -disco:
+    #           funcion para guardar los datos en la BD
+    #       -actualizarMother:
+    #           funcion para actualizar los datos del mother
+    #       -actualizarRam:
+    #           funcion para actualizar los datos del ram
+    #       -actualizarCpu:
+    #               funcion para actualizar los datos del cpu
+    #       -actualizarFuente:
+    #               funcion para actualizar los datos de la fuente
+    #       -actualizarCase:
+    #               funcion para actualizar los datos del case
+    #       -actualizarDisco:
+    #               funcion para actualizar los datos del disco
+
     def cambiar(self,tipo):
         self.stackedW.setCurrentIndex(tipo)
     def cancelar(self):
@@ -78,7 +128,6 @@ class Registro_Hardware(QDialog):
             self.close()
         else:
             QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
-
     def ram(self):
         tipohard = "Ram"
         marca = self.Marca_Ram.text()
@@ -95,7 +144,6 @@ class Registro_Hardware(QDialog):
             self.close()
         else:
             QMessageBox.information(self,"Guardar","Ocurrio un error al guarda, comprobar datos")
-
     def cpu(self):
         tipohard = "CPU"
         marca = self.Marca_Cpu.text()
@@ -112,9 +160,7 @@ class Registro_Hardware(QDialog):
         print(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha,estado)
         if guardarCpu(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha,estado):
             QMessageBox.information(self,"Guardar","Cpu Guardada Correctamente")
-            self.close()
-
-        
+            self.close()    
     def fuente(self):
         tipohard = "Fuente"
         marca = self.Marca_Fuente.text()
@@ -158,8 +204,6 @@ class Registro_Hardware(QDialog):
         if guardarDisco(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha,estado):
             QMessageBox.information(self,"Guardar","Disco Guardado Correctamente")
             self.close()
-
-
 #Modificaciones
 
     def actualizarMother(self,cod):
@@ -176,7 +220,9 @@ class Registro_Hardware(QDialog):
         if modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
             self.close()
-
+            return True
+        else:
+            return False
     def actualizarRam(self, cod):
         tipohard = "Ram"
         marca = self.Marca_Ram.text()
@@ -189,7 +235,6 @@ class Registro_Hardware(QDialog):
         if modRam(cod,tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Ram Actualizada")
             self.close()
-
     def actualizarCpu(self, cod):
         tipohard = "CPU"
         marca = self.Marca_Cpu.text()
@@ -205,8 +250,6 @@ class Registro_Hardware(QDialog):
         if modCPU(cod, tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Cpu Actualizado")
             self.close()
-
-
     def actualizarFuente(self, cod):
         tipohard = "Fuente"
         marca = self.Marca_Fuente.text()
@@ -220,7 +263,6 @@ class Registro_Hardware(QDialog):
         if modFuente(cod, tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Fuente Actualizado")
             self.close()
-
     def actualizarCase(self, cod):
         tipohard = "Case"
         marca = self.Marca_Case.text()
@@ -231,7 +273,6 @@ class Registro_Hardware(QDialog):
         if modCase(cod, tipohard,marca,modelo,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Case Actualizado")
             self.close()
-
     def actualizarDisco(self, cod):
         tipohard = "Disco"
         marca = self.Marca_Disco.text()

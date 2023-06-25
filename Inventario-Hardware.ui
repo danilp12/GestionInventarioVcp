@@ -14,15 +14,40 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QDialog{
+   <string notr="true">QDialog{
     color: rgba(255, 255, 255, 10) ;
-	background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 85, 0, 255), stop:1 rgba(255, 170, 0, 255));
+	background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(255, 121, 14, 255), stop:1 rgba(80, 35, 46, 255));
+	
 	opacity:80;
 	position: relative;
     background-position: center;
     background-repeat: no-repeat;
     
+}
+
+QPushButton {
+ background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(80, 35, 46, 255), stop:1 rgba(255, 121, 14, 255));
+ color: black;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Hover {
+ background-color: rgb(255, 121, 14);
+ color: white;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Pressed {
+ background-color: rgb(80, 35, 46);
+ color: black;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
 }</string>
   </property>
   <widget class="QPushButton" name="Buscar">
@@ -36,7 +61,8 @@ QDialog{
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <family>Epitet-SemiBold</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -55,7 +81,8 @@ Hardware</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Epitet-SemiBold</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -74,7 +101,8 @@ Hardware</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Epitet-SemiBold</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -93,7 +121,8 @@ Hardware</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Epitet-SemiBold</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -140,6 +169,12 @@ Hardware</string>
       <height>371</height>
      </rect>
     </property>
+    <property name="editTriggers">
+     <set>QAbstractItemView::NoEditTriggers</set>
+    </property>
+    <property name="selectionBehavior">
+     <enum>QAbstractItemView::SelectRows</enum>
+    </property>
     <column>
      <property name="text">
       <string>ID Hardware</string>
@@ -178,7 +213,8 @@ Hardware</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Epitet-SemiBold</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">

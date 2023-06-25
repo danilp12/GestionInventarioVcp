@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>754</width>
+    <height>466</height>
    </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>200</width>
+    <height>200</height>
+   </size>
   </property>
   <property name="windowTitle">
    <string>MainWindow</string>
@@ -17,47 +23,80 @@
    <string notr="true">
 QMainWindow{
     color: rgba(255, 255, 255, 10) ;
-	background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 85, 0, 255), stop:1 rgba(255, 170, 0, 255));
-	background-image: url(images.jpg) 0 0 0 0 stretch stretch;
+	background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(255, 121, 14, 255), stop:1 rgba(80, 35, 46, 255));
+	
 	opacity:80;
 	position: relative;
     background-position: center;
     background-repeat: no-repeat;
     
 }
-</string>
+
+QPushButton {
+ background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(80, 35, 46, 255), stop:1 rgba(255, 121, 14, 255));
+ color: black;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Hover {
+ background-color: rgb(255, 121, 14);
+ color: white;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Pressed {
+ background-color: rgb(80, 35, 46);
+ color: black;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}</string>
   </property>
   <widget class="QWidget" name="centralwidget">
+   <property name="minimumSize">
+    <size>
+     <width>0</width>
+     <height>909</height>
+    </size>
+   </property>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>280</x>
-      <y>0</y>
-      <width>221</width>
+      <x>260</x>
+      <y>70</y>
+      <width>241</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Mongolian Baiti</family>
+      <family>Epitet-SemiBold</family>
       <pointsize>28</pointsize>
      </font>
     </property>
     <property name="text">
-     <string>Inventario</string>
+     <string>INVENTARIO</string>
     </property>
    </widget>
    <widget class="QPushButton" name="Inventario_Equipos">
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>110</y>
+      <y>190</y>
       <width>211</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
-     <font/>
+     <font>
+      <family>Epitet-SemiBold</family>
+      <pointsize>-1</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Inventario
@@ -68,13 +107,16 @@ Equipos</string>
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>110</y>
+      <y>190</y>
       <width>211</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
-     <font/>
+     <font>
+      <family>Epitet-SemiBold</family>
+      <pointsize>-1</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Inventario
@@ -84,16 +126,16 @@ Hardware</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>20</y>
-      <width>51</width>
+      <width>61</width>
       <height>21</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft Tai Le</family>
-      <pointsize>10</pointsize>
+      <family>Epitet-SemiBold</family>
+      <pointsize>15</pointsize>
      </font>
     </property>
     <property name="text">
@@ -105,14 +147,14 @@ Hardware</string>
      <rect>
       <x>70</x>
       <y>40</y>
-      <width>71</width>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft Tai Le</family>
-      <pointsize>10</pointsize>
+      <family>Epitet-SemiBold</family>
+      <pointsize>15</pointsize>
      </font>
     </property>
     <property name="text">
@@ -124,14 +166,14 @@ Hardware</string>
      <rect>
       <x>70</x>
       <y>20</y>
-      <width>91</width>
+      <width>141</width>
       <height>20</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft Tai Le</family>
-      <pointsize>10</pointsize>
+      <family>Epitet-SemiBold</family>
+      <pointsize>15</pointsize>
      </font>
     </property>
     <property name="text">
@@ -141,7 +183,7 @@ Hardware</string>
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>30</x>
+      <x>10</x>
       <y>40</y>
       <width>51</width>
       <height>21</height>
@@ -149,8 +191,8 @@ Hardware</string>
     </property>
     <property name="font">
      <font>
-      <family>Microsoft Tai Le</family>
-      <pointsize>10</pointsize>
+      <family>Epitet-SemiBold</family>
+      <pointsize>15</pointsize>
      </font>
     </property>
     <property name="text">
@@ -161,13 +203,16 @@ Hardware</string>
     <property name="geometry">
      <rect>
       <x>110</x>
-      <y>250</y>
+      <y>330</y>
       <width>211</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
-     <font/>
+     <font>
+      <family>Epitet-SemiBold</family>
+      <pointsize>-1</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Inventario
@@ -178,16 +223,52 @@ Perifericos</string>
     <property name="geometry">
      <rect>
       <x>390</x>
-      <y>250</y>
+      <y>330</y>
       <width>211</width>
       <height>71</height>
      </rect>
     </property>
     <property name="font">
-     <font/>
+     <font>
+      <family>Epitet-SemiBold</family>
+      <pointsize>-1</pointsize>
+     </font>
     </property>
     <property name="text">
      <string>Reparaciones</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="Logo">
+    <property name="geometry">
+     <rect>
+      <x>580</x>
+      <y>10</y>
+      <width>161</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>TextLabel</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>10</y>
+      <width>351</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <family>Epitet-Bold</family>
+      <pointsize>28</pointsize>
+      <underline>true</underline>
+     </font>
+    </property>
+    <property name="text">
+     <string>Area Modernizacion</string>
     </property>
    </widget>
   </widget>
@@ -196,7 +277,7 @@ Perifericos</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>754</width>
      <height>21</height>
     </rect>
    </property>

@@ -23,6 +23,12 @@ QDialog{
     background-position: center;
     background-repeat: no-repeat;
     
+}
+QPushButton {
+ background-color: white;
+ color: black;
+font-family:Bodoni MT;
+font-size: 16px;
 }</string>
   </property>
   <widget class="QPushButton" name="Buscar">
@@ -36,7 +42,8 @@ QDialog{
    </property>
    <property name="font">
     <font>
-     <pointsize>10</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -55,7 +62,8 @@ Equipo</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -74,7 +82,8 @@ Equipo</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -93,7 +102,8 @@ Equipo</string>
    </property>
    <property name="font">
     <font>
-     <pointsize>14</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">

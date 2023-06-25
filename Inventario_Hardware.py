@@ -7,6 +7,37 @@ from datetime import datetime as dt
 from Registro_Hardware import Registro_Hardware
 from conexiones import Cursor, conexion
 
+### CLASE INVENTARIO (QDIALOG) 
+    ### ATRIBUTOS:
+    ###     -NuevoHardware (Boton)
+    ###     -DetalleHardware (Boton)
+    ###     -EliminarHardware (Boton)
+    ###     -Buscar (Boton)
+    ###     -BuscarID (Campo de Texto)
+    ###     -TablaHardware (TableWidget)
+
+    ### METODOS:
+    ###     -modificar_hardware:
+    ###         primero se carga el objeto Registro_Hardware luego
+    ###         esta funcion toma el texto de la tabla de la interfaz de la columna Tipo de hardware
+    #           luego busca con el id y tipo de hard en la bd y rellena la interfaz para realizar la modificacion
+    #       -detalle_hardware:
+    #           primero se carga el objeto Registro_Hardware luego
+    #           esta funcion toma el texto de la tabla de la interfaz de la columna Tipo de hardware
+    #           luego busca con el id y tipo de hard en la bd y rellena la interfaz para mostrar los detelles
+    #       -bloqueodebotones:
+    #           esta funcion bloquea los botones de la interfaz de registro de hardware
+    #       -nuevo_hardware:
+    #           esta funcion carga el objeto Registro_Hardware y la ejecuta para registrar el nuevo hardware
+    #       -cargarhard:
+    #           esta funcion carga todos los hardware de la bd y los lista en la tabla de la interfaz
+    ###     -darbajahard:
+    #           esta funcion se le da de baja al hardware seleccionado en la tabla de interfaz
+    #           al igual que modificar hardware esta funcion lee el id y tipo de hard de la tabla de interfaz y luego
+    #           busca en la bd con esos datos para realizar la baja. el elemento no se elimina, se cambia el estado a "Descontinuado"
+
+
+
 class Inventario_Hardware(QDialog):
     def __init__(self):
         QDialog.__init__(self)
@@ -18,6 +49,7 @@ class Inventario_Hardware(QDialog):
         self.EliminarHardware.clicked.connect(self.darbajahard)
         self.ModificarHardware.clicked.connect(self.modificar_hardware)
         self.cargarhard()
+    
     
 
     
@@ -113,8 +145,7 @@ class Inventario_Hardware(QDialog):
                 self.det.Fecha_Disco.setDate(fecha)
             self.bloqueodebotones()
             
-            self.cargarhard()
-            
+            self.cargarhard()     
     def detelle_hardware(self):
         if self.TablaHardware.currentRow() != -1:
             self.det = Registro_Hardware()
@@ -210,9 +241,7 @@ class Inventario_Hardware(QDialog):
                 self.det.Serie_Disco.setText(listado[0][7])
                 self.det.Garantia_Disco.setText(listado[0][8])
                 self.det.Fecha_Disco.setDate(fecha)
-            self.bloqueodebotones()
-            
-        
+            self.bloqueodebotones()      
     def bloqueodebotones(self):
         self.det.Mother.setEnabled(False)
         self.det.Ram.setEnabled(False)
@@ -227,8 +256,6 @@ class Inventario_Hardware(QDialog):
         self.reg = Registro_Hardware()
         self.reg.exec_()
         self.cargarhard()
-    
-
     def cargarhard(self):
         cursor = Cursor()
         cursor.execute("SELECT * FROM Motherboard")

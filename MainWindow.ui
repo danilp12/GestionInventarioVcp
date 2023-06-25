@@ -24,6 +24,12 @@ QMainWindow{
     background-position: center;
     background-repeat: no-repeat;
     
+}
+QPushButton {
+ background-color: white;
+ color: black;
+font-family:Bodoni MT;
+font-size: 20px;
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">
@@ -38,8 +44,8 @@ QMainWindow{
     </property>
     <property name="font">
      <font>
-      <family>Mongolian Baiti</family>
-      <pointsize>20</pointsize>
+      <family>Bodoni MT</family>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="text">
@@ -57,8 +63,8 @@ QMainWindow{
     </property>
     <property name="font">
      <font>
-      <family>Mongolian Baiti</family>
-      <pointsize>20</pointsize>
+      <family>Bodoni MT</family>
+      <pointsize>-1</pointsize>
      </font>
     </property>
     <property name="text">

@@ -1,5 +1,5 @@
 from time import strftime
-from PyQt5.QtGui import QIcon,QColor,QFont
+from PyQt5.QtGui import QIcon,QColor,QFont,QPixmap
 from PyQt5.QtWidgets import  QFileDialog, QInputDialog, QMainWindow, QWidget, QMessageBox,QDialog,QTableWidgetItem 
 from PyQt5.QtCore import QCoreApplication,QTimer,QElapsedTimer, Qt
 from PyQt5 import QtWidgets, uic
@@ -22,6 +22,7 @@ class Inventario(QMainWindow):
         uic.loadUi('Inventario.ui', self)
         self.setWindowTitle('Inventario')
         self.setWindowIcon(QIcon('icon.png'))
+        self.Logo.setPixmap(QPixmap("logo.jpg"))
         self.Fecha.setText(strftime('%d/%m/%Y'))
         self.Hora.setText(self.actualizar_tiempo())
         self.Inventario_Equipos.clicked.connect(self.inv_equipos)

@@ -23,6 +23,12 @@ QDialog{
     background-position: center;
     background-repeat: no-repeat;
     
+}
+QPushButton {
+ background-color: white;
+ color: black;
+font-family:Bodoni MT;
+font-size: 16px;
 }</string>
   </property>
   <widget class="QLabel" name="label">
@@ -181,8 +187,8 @@ QDialog{
    </property>
    <property name="font">
     <font>
-     <family>Mongolian Baiti</family>
-     <pointsize>16</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -200,8 +206,8 @@ QDialog{
    </property>
    <property name="font">
     <font>
-     <family>Mongolian Baiti</family>
-     <pointsize>16</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">

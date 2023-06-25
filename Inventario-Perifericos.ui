@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>678</width>
+    <width>728</width>
     <height>501</height>
    </rect>
   </property>
@@ -23,6 +23,12 @@ QDialog{
     background-position: center;
     background-repeat: no-repeat;
     
+}
+QPushButton {
+ background-color: white;
+ color: black;
+font-family:Bodoni MT;
+font-size: 16px;
 }</string>
   </property>
   <widget class="QPushButton" name="NuevoPeriferico">
@@ -36,8 +42,8 @@ QDialog{
    </property>
    <property name="font">
     <font>
-     <family>Mongolian Baiti</family>
-     <pointsize>18</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -56,8 +62,8 @@ Periferico</string>
    </property>
    <property name="font">
     <font>
-     <family>Mongolian Baiti</family>
-     <pointsize>18</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -76,8 +82,8 @@ Periferico</string>
    </property>
    <property name="font">
     <font>
-     <family>Mongolian Baiti</family>
-     <pointsize>18</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
@@ -96,8 +102,8 @@ Periferico</string>
    </property>
    <property name="font">
     <font>
-     <family>Mongolian Baiti</family>
-     <pointsize>13</pointsize>
+     <family>Bodoni MT</family>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="text">
