@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>773</width>
-    <height>490</height>
+    <width>734</width>
+    <height>575</height>
    </rect>
   </property>
   <property name="minimumSize">
@@ -31,24 +31,55 @@ QDialog{
     
 }
 QPushButton {
- background-color: white;
+ background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(255, 121, 14, 255), stop:1 rgba(80, 35, 46, 255));
  color: black;
-font-family:Bodoni MT;
+font-family:Epitet-SemiBold;
 font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Hover {
+ background-color: rgb(255, 121, 14);
+ color: white;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Pressed {
+ background-color: rgb(80, 35, 46);
+ color: black;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:disabled{
+	border-style: outset;
+	border-width: 2px;
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-bottom-color: rgb(58, 58, 58);
+	border-bottom-width: 1px;
+	border-style: solid;
+	color: rgb(0, 0, 0);
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(77, 77, 77, 255));
 }</string>
   </property>
   <widget class="QPushButton" name="Mother">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>40</y>
+     <x>20</x>
+     <y>100</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -59,15 +90,15 @@ font-size: 16px;
   <widget class="QPushButton" name="Cpu">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>120</y>
+     <x>20</x>
+     <y>180</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -78,15 +109,15 @@ font-size: 16px;
   <widget class="QPushButton" name="Ram">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>80</y>
+     <x>20</x>
+     <y>140</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -97,15 +128,15 @@ font-size: 16px;
   <widget class="QPushButton" name="Fuente">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>160</y>
+     <x>20</x>
+     <y>220</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -116,15 +147,15 @@ font-size: 16px;
   <widget class="QPushButton" name="Case">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>200</y>
+     <x>20</x>
+     <y>260</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -135,15 +166,15 @@ font-size: 16px;
   <widget class="QPushButton" name="Disco">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>240</y>
+     <x>20</x>
+     <y>300</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -154,14 +185,17 @@ font-size: 16px;
   <widget class="QStackedWidget" name="stackedW">
    <property name="geometry">
     <rect>
-     <x>170</x>
-     <y>30</y>
+     <x>180</x>
+     <y>100</y>
      <width>511</width>
-     <height>411</height>
+     <height>451</height>
     </rect>
    </property>
+   <property name="inputMethodHints">
+    <set>Qt::ImhNone</set>
+   </property>
    <property name="currentIndex">
-    <number>4</number>
+    <number>0</number>
    </property>
    <widget class="QWidget" name="pageMother">
     <property name="enabled">
@@ -178,8 +212,9 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
-       <pointsize>20</pointsize>
+       <family>Epitet-SemiBold</family>
+       <pointsize>26</pointsize>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -197,7 +232,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -216,7 +251,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -235,7 +270,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -254,7 +289,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -273,7 +308,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -292,7 +327,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -311,7 +346,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -330,7 +365,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -349,7 +384,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -460,7 +495,7 @@ font-size: 16px;
       <rect>
        <x>200</x>
        <y>340</y>
-       <width>113</width>
+       <width>21</width>
        <height>20</height>
       </rect>
      </property>
@@ -468,6 +503,9 @@ font-size: 16px;
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
     </widget>
     <widget class="QDateEdit" name="Fecha_Mother">
@@ -490,6 +528,35 @@ font-size: 16px;
       </datetime>
      </property>
     </widget>
+    <widget class="QComboBox" name="GarantiaBox_Mother">
+     <property name="geometry">
+      <rect>
+       <x>228</x>
+       <y>340</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_Mother">
+     <property name="geometry">
+      <rect>
+       <x>330</x>
+       <y>340</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Epitet-SemiBold</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sin Garantia</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page2">
     <widget class="QLabel" name="label_2">
@@ -503,8 +570,9 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
-       <pointsize>20</pointsize>
+       <family>Epitet-SemiBold</family>
+       <pointsize>26</pointsize>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -522,7 +590,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -541,7 +609,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -560,7 +628,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -579,7 +647,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -598,7 +666,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -617,7 +685,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -636,7 +704,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -724,7 +792,7 @@ font-size: 16px;
       <rect>
        <x>190</x>
        <y>260</y>
-       <width>113</width>
+       <width>21</width>
        <height>20</height>
       </rect>
      </property>
@@ -732,6 +800,9 @@ font-size: 16px;
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
     </widget>
     <widget class="QDateEdit" name="Fecha_Ram">
@@ -754,6 +825,35 @@ font-size: 16px;
       </datetime>
      </property>
     </widget>
+    <widget class="QComboBox" name="GarantiaBox_Ram">
+     <property name="geometry">
+      <rect>
+       <x>218</x>
+       <y>260</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_Ram">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>260</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Epitet-SemiBold</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sin Garantia</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page3">
     <widget class="QLabel" name="label_3">
@@ -767,8 +867,9 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
-       <pointsize>20</pointsize>
+       <family>Epitet-SemiBold</family>
+       <pointsize>26</pointsize>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -778,7 +879,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_20">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>60</y>
        <width>61</width>
        <height>21</height>
@@ -786,7 +887,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -797,7 +898,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_21">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>100</y>
        <width>71</width>
        <height>21</height>
@@ -805,7 +906,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -816,15 +917,15 @@ font-size: 16px;
     <widget class="QLabel" name="label_22">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>140</y>
-       <width>71</width>
+       <width>81</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -835,7 +936,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_23">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>180</y>
        <width>71</width>
        <height>21</height>
@@ -843,7 +944,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -854,15 +955,15 @@ font-size: 16px;
     <widget class="QLabel" name="label_24">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>30</x>
        <y>220</y>
-       <width>91</width>
+       <width>101</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -873,7 +974,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_25">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>260</y>
        <width>71</width>
        <height>21</height>
@@ -881,7 +982,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -892,7 +993,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_26">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>300</y>
        <width>71</width>
        <height>21</height>
@@ -900,7 +1001,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -911,7 +1012,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_27">
      <property name="geometry">
       <rect>
-       <x>80</x>
+       <x>40</x>
        <y>340</y>
        <width>81</width>
        <height>21</height>
@@ -919,7 +1020,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -930,7 +1031,7 @@ font-size: 16px;
     <widget class="QLabel" name="label_103">
      <property name="geometry">
       <rect>
-       <x>310</x>
+       <x>270</x>
        <y>60</y>
        <width>81</width>
        <height>21</height>
@@ -938,7 +1039,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -949,15 +1050,15 @@ font-size: 16px;
     <widget class="QLabel" name="label_104">
      <property name="geometry">
       <rect>
-       <x>310</x>
-       <y>100</y>
+       <x>270</x>
+       <y>140</y>
        <width>61</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -968,7 +1069,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Marca_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>60</y>
        <width>113</width>
        <height>20</height>
@@ -983,7 +1084,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Modelo_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>100</y>
        <width>113</width>
        <height>20</height>
@@ -998,7 +1099,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Nucleos_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>140</y>
        <width>113</width>
        <height>20</height>
@@ -1013,7 +1114,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Hilos_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>180</y>
        <width>113</width>
        <height>20</height>
@@ -1028,7 +1129,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Frecuencia_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>220</y>
        <width>113</width>
        <height>20</height>
@@ -1043,7 +1144,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Socket_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>260</y>
        <width>113</width>
        <height>20</height>
@@ -1058,7 +1159,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Cache_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>300</y>
        <width>113</width>
        <height>20</height>
@@ -1073,7 +1174,7 @@ font-size: 16px;
     <widget class="QLineEdit" name="Serie_Cpu">
      <property name="geometry">
       <rect>
-       <x>180</x>
+       <x>140</x>
        <y>340</y>
        <width>113</width>
        <height>20</height>
@@ -1088,9 +1189,9 @@ font-size: 16px;
     <widget class="QLineEdit" name="Garantia_Cpu">
      <property name="geometry">
       <rect>
-       <x>390</x>
+       <x>350</x>
        <y>60</y>
-       <width>113</width>
+       <width>21</width>
        <height>20</height>
       </rect>
      </property>
@@ -1099,12 +1200,15 @@ font-size: 16px;
        <pointsize>12</pointsize>
       </font>
      </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
+     </property>
     </widget>
     <widget class="QDateEdit" name="Fecha_Cpu">
      <property name="geometry">
       <rect>
-       <x>390</x>
-       <y>100</y>
+       <x>350</x>
+       <y>140</y>
        <width>110</width>
        <height>22</height>
       </rect>
@@ -1120,6 +1224,35 @@ font-size: 16px;
       </datetime>
      </property>
     </widget>
+    <widget class="QComboBox" name="GarantiaBox_Cpu">
+     <property name="geometry">
+      <rect>
+       <x>380</x>
+       <y>60</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_Cpu">
+     <property name="geometry">
+      <rect>
+       <x>310</x>
+       <y>90</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Epitet-SemiBold</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sin Garantia</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page4">
     <widget class="QLabel" name="label_4">
@@ -1133,8 +1266,9 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
-       <pointsize>20</pointsize>
+       <family>Epitet-SemiBold</family>
+       <pointsize>26</pointsize>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -1152,7 +1286,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1171,7 +1305,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1190,7 +1324,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1209,7 +1343,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1228,7 +1362,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1247,7 +1381,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1266,7 +1400,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1285,7 +1419,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1378,7 +1512,7 @@ font-size: 16px;
       <rect>
        <x>200</x>
        <y>300</y>
-       <width>113</width>
+       <width>21</width>
        <height>20</height>
       </rect>
      </property>
@@ -1386,6 +1520,9 @@ font-size: 16px;
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
     </widget>
     <widget class="QDateEdit" name="Fecha_Fuente">
@@ -1408,6 +1545,35 @@ font-size: 16px;
       </datetime>
      </property>
     </widget>
+    <widget class="QComboBox" name="GarantiaBox_Fuente">
+     <property name="geometry">
+      <rect>
+       <x>228</x>
+       <y>300</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_Fuente">
+     <property name="geometry">
+      <rect>
+       <x>320</x>
+       <y>300</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Epitet-SemiBold</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sin Garantia</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page5">
     <widget class="QLabel" name="label_5">
@@ -1421,8 +1587,9 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
-       <pointsize>20</pointsize>
+       <family>Epitet-SemiBold</family>
+       <pointsize>26</pointsize>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -1440,7 +1607,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1459,7 +1626,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1478,7 +1645,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1497,7 +1664,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1516,7 +1683,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1574,7 +1741,7 @@ font-size: 16px;
       <rect>
        <x>170</x>
        <y>180</y>
-       <width>113</width>
+       <width>21</width>
        <height>20</height>
       </rect>
      </property>
@@ -1582,6 +1749,9 @@ font-size: 16px;
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
     </widget>
     <widget class="QDateEdit" name="Fecha_Case">
@@ -1604,6 +1774,35 @@ font-size: 16px;
       </datetime>
      </property>
     </widget>
+    <widget class="QComboBox" name="GarantiaBox_Case">
+     <property name="geometry">
+      <rect>
+       <x>198</x>
+       <y>180</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_Case">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>180</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Epitet-SemiBold</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sin Garantia</string>
+     </property>
+    </widget>
    </widget>
    <widget class="QWidget" name="page6">
     <widget class="QLabel" name="label_6">
@@ -1617,8 +1816,9 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
-       <pointsize>20</pointsize>
+       <family>Epitet-SemiBold</family>
+       <pointsize>26</pointsize>
+       <underline>true</underline>
       </font>
      </property>
      <property name="text">
@@ -1636,7 +1836,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1655,7 +1855,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1674,7 +1874,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1693,7 +1893,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1712,7 +1912,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1731,7 +1931,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1744,13 +1944,13 @@ font-size: 16px;
       <rect>
        <x>80</x>
        <y>300</y>
-       <width>71</width>
+       <width>81</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1763,13 +1963,13 @@ font-size: 16px;
       <rect>
        <x>80</x>
        <y>340</y>
-       <width>71</width>
+       <width>81</width>
        <height>21</height>
       </rect>
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1788,7 +1988,7 @@ font-size: 16px;
      </property>
      <property name="font">
       <font>
-       <family>Mongolian Baiti</family>
+       <family>Epitet-SemiBold</family>
        <pointsize>16</pointsize>
       </font>
      </property>
@@ -1901,7 +2101,7 @@ font-size: 16px;
       <rect>
        <x>180</x>
        <y>340</y>
-       <width>113</width>
+       <width>21</width>
        <height>20</height>
       </rect>
      </property>
@@ -1909,6 +2109,9 @@ font-size: 16px;
       <font>
        <pointsize>12</pointsize>
       </font>
+     </property>
+     <property name="inputMethodHints">
+      <set>Qt::ImhDigitsOnly|Qt::ImhPreferNumbers</set>
      </property>
     </widget>
     <widget class="QDateEdit" name="Fecha_Disco">
@@ -1931,20 +2134,49 @@ font-size: 16px;
       </datetime>
      </property>
     </widget>
+    <widget class="QComboBox" name="GarantiaBox_Disco">
+     <property name="geometry">
+      <rect>
+       <x>208</x>
+       <y>340</y>
+       <width>81</width>
+       <height>22</height>
+      </rect>
+     </property>
+    </widget>
+    <widget class="QCheckBox" name="checkBox_Disco">
+     <property name="geometry">
+      <rect>
+       <x>300</x>
+       <y>340</y>
+       <width>111</width>
+       <height>21</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <family>Epitet-SemiBold</family>
+       <pointsize>12</pointsize>
+      </font>
+     </property>
+     <property name="text">
+      <string>Sin Garantia</string>
+     </property>
+    </widget>
    </widget>
   </widget>
   <widget class="QPushButton" name="Guardar">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>350</y>
+     <x>20</x>
+     <y>410</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -1955,15 +2187,15 @@ font-size: 16px;
   <widget class="QPushButton" name="Cancelar">
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>400</y>
+     <x>20</x>
+     <y>460</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -1977,15 +2209,15 @@ font-size: 16px;
    </property>
    <property name="geometry">
     <rect>
-     <x>10</x>
-     <y>300</y>
+     <x>20</x>
+     <y>360</y>
      <width>141</width>
      <height>41</height>
     </rect>
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -1993,7 +2225,164 @@ font-size: 16px;
     <string>Modificar</string>
    </property>
   </widget>
+  <widget class="QLabel" name="Logo">
+   <property name="geometry">
+    <rect>
+     <x>520</x>
+     <y>10</y>
+     <width>161</width>
+     <height>81</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>TextLabel</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_51">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>20</y>
+     <width>411</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Epitet-SemiBold</family>
+     <pointsize>28</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>REGISTRO HARDWARE</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="Exportar">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>510</y>
+     <width>141</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Epitet-SemiBold</family>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="text">
+    <string>Exportar PDF</string>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>-50</x>
+     <y>80</y>
+     <width>999999</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Minimum" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>90</y>
+     <width>20</width>
+     <height>99999</height>
+    </rect>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Vertical</enum>
+   </property>
+  </widget>
  </widget>
+ <tabstops>
+  <tabstop>Mother</tabstop>
+  <tabstop>Ram</tabstop>
+  <tabstop>Cpu</tabstop>
+  <tabstop>Fuente</tabstop>
+  <tabstop>Case</tabstop>
+  <tabstop>Disco</tabstop>
+  <tabstop>Guardar</tabstop>
+  <tabstop>Cancelar</tabstop>
+  <tabstop>Modificar</tabstop>
+  <tabstop>Marca_Mother</tabstop>
+  <tabstop>Modelo_Mother</tabstop>
+  <tabstop>Chipset_Mother</tabstop>
+  <tabstop>Socket_Mother</tabstop>
+  <tabstop>Serie_Mother</tabstop>
+  <tabstop>Video_Mother</tabstop>
+  <tabstop>Audio_Mother</tabstop>
+  <tabstop>Garantia_Mother</tabstop>
+  <tabstop>GarantiaBox_Mother</tabstop>
+  <tabstop>Fecha_Mother</tabstop>
+  <tabstop>Marca_Ram</tabstop>
+  <tabstop>Modelo_Ram</tabstop>
+  <tabstop>Capacidad_Ram</tabstop>
+  <tabstop>Frecuencia_Ram</tabstop>
+  <tabstop>Serie_Ram</tabstop>
+  <tabstop>Garantia_Ram</tabstop>
+  <tabstop>GarantiaBox_Ram</tabstop>
+  <tabstop>Fecha_Ram</tabstop>
+  <tabstop>Marca_Cpu</tabstop>
+  <tabstop>Modelo_Cpu</tabstop>
+  <tabstop>Nucleos_Cpu</tabstop>
+  <tabstop>Hilos_Cpu</tabstop>
+  <tabstop>Frecuencia_Cpu</tabstop>
+  <tabstop>Socket_Cpu</tabstop>
+  <tabstop>Cache_Cpu</tabstop>
+  <tabstop>Serie_Cpu</tabstop>
+  <tabstop>Garantia_Cpu</tabstop>
+  <tabstop>GarantiaBox_Cpu</tabstop>
+  <tabstop>Fecha_Cpu</tabstop>
+  <tabstop>Marca_Fuente</tabstop>
+  <tabstop>Modelo_Fuente</tabstop>
+  <tabstop>Potencia_Fuente</tabstop>
+  <tabstop>Certificacion_Fuente</tabstop>
+  <tabstop>Voltaje_Fuente</tabstop>
+  <tabstop>Serie_Fuente</tabstop>
+  <tabstop>Garantia_Fuente</tabstop>
+  <tabstop>GarantiaBox_Fuente</tabstop>
+  <tabstop>Fecha_Fuente</tabstop>
+  <tabstop>Marca_Case</tabstop>
+  <tabstop>Modelo_Case</tabstop>
+  <tabstop>Serie_Case</tabstop>
+  <tabstop>Garantia_Case</tabstop>
+  <tabstop>GarantiaBox_Case</tabstop>
+  <tabstop>Fecha_Case</tabstop>
+  <tabstop>Marca_Disco</tabstop>
+  <tabstop>Modelo_Disco</tabstop>
+  <tabstop>Capacidad_Disco</tabstop>
+  <tabstop>TipoDisco</tabstop>
+  <tabstop>Cache_Disco</tabstop>
+  <tabstop>Buffer_Disco</tabstop>
+  <tabstop>Serie_Disco</tabstop>
+  <tabstop>Garantia_Disco</tabstop>
+  <tabstop>GarantiaBox_Disco</tabstop>
+  <tabstop>Fecha_Disco</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>

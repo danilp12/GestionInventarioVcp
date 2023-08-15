@@ -32,9 +32,10 @@ QMainWindow{
     
 }
 
+
 QPushButton {
- background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(80, 35, 46, 255), stop:1 rgba(255, 121, 14, 255));
- color: black;
+ background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(255, 121, 14, 255), stop:1 rgba(80, 35, 46, 255));
+ color: white;
 font-family:Epitet-SemiBold;
 font-size: 16px;
 margin:2px;
@@ -42,7 +43,7 @@ margin:2px;
 }
 QPushButton:Hover {
  background-color: rgb(255, 121, 14);
- color: white;
+ color: red;
 font-family:Epitet-SemiBold;
 font-size: 16px;
 margin:2px;
@@ -55,6 +56,19 @@ font-family:Epitet-SemiBold;
 font-size: 16px;
 margin:2px;
  border-radius:10px;
+}
+QPushButton:disabled{
+	border-style: outset;
+	border-width: 2px;
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-bottom-color: rgb(58, 58, 58);
+	border-bottom-width: 1px;
+	border-style: solid;
+	color: rgb(0, 0, 0);
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(77, 77, 77, 255));
 }</string>
   </property>
   <widget class="QWidget" name="centralwidget">

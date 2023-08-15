@@ -1,6 +1,6 @@
 from time import strftime
 from turtle import pos
-from PyQt5.QtGui import QIcon,QColor,QFont
+from PyQt5.QtGui import QIcon,QColor,QFont,QPixmap
 from PyQt5.QtWidgets import  QFileDialog, QInputDialog, QMainWindow, QWidget, QMessageBox,QDialog,QTableWidgetItem 
 from PyQt5.QtCore import QCoreApplication,QTimer,QElapsedTimer
 from PyQt5 import QtWidgets, uic,QtCore 
@@ -14,6 +14,7 @@ class Registro_Hardware(QDialog):
         uic.loadUi('Hardware.ui',self)
         self.setWindowTitle('Registro Hardware')
         self.setWindowIcon(QIcon('icon.png'))
+        self.Logo.setPixmap(QPixmap("logo.jpg"))
         self.Mother.clicked.connect(lambda: self.cambiar(0))
         self.Ram.clicked.connect(lambda: self.cambiar(1))
         self.Cpu.clicked.connect(lambda: self.cambiar(2))
@@ -22,11 +23,26 @@ class Registro_Hardware(QDialog):
         self.Disco.clicked.connect(lambda:self.cambiar(5))
         self.Video_Mother.addItems(['HDMI','DVI','VGA','DVI','Otro'])
         self.Audio_Mother.addItems(['Estereo','Mono','Otro','Placa Externa'])
-        self.Certificacion_Fuente.addItems(['Gold','Silver','Bronce'])
+        self.Certificacion_Fuente.addItems(['Gold','Silver','Bronce','Sin Certificacion'])
         self.Voltaje_Fuente.addItems(['110V','220V','380V','Otro'])
         self.TipoDisco.addItems(['SSD','HDD','M2','Otro'])
+        self.GarantiaBox_Mother.addItems(["Dias","Semanas","Meses","Años"])
+        self.GarantiaBox_Disco.addItems(["Dias","Semanas","Meses","Años"])
+        self.GarantiaBox_Case.addItems(["Dias","Semanas","Meses","Años"])
+        self.GarantiaBox_Ram.addItems(["Dias","Semanas","Meses","Años"])
+        self.GarantiaBox_Cpu.addItems(["Dias","Semanas","Meses","Años"])
+        self.GarantiaBox_Fuente.addItems(["Dias","Semanas","Meses","Años"])
         self.Guardar.clicked.connect(self.guardar)
         self.Cancelar.clicked.connect(self.cancelar)
+        
+        self.checkBox_Mother.stateChanged.connect(self.cambiargarantia)
+        self.checkBox_Ram.stateChanged.connect(self.cambiargarantia)
+        self.checkBox_Cpu.stateChanged.connect(self.cambiargarantia)
+        self.checkBox_Fuente.stateChanged.connect(self.cambiargarantia)
+        self.checkBox_Case.stateChanged.connect(self.cambiargarantia)
+        self.checkBox_Disco.stateChanged.connect(self.cambiargarantia)
+
+                                               
 ### CLASE Registro_Hardware (QDIALOG) 
     ### ATRIBUTOS:
     ###     -Mother (Boton)
@@ -77,7 +93,18 @@ class Registro_Hardware(QDialog):
     #               funcion para actualizar los datos del case
     #       -actualizarDisco:
     #               funcion para actualizar los datos del disco
-
+    def calculargarantia(self,fechainicial,garantia,duracion):
+        if duracion == "Dias":
+            duracion = 1
+        elif duracion == "Semanas":
+            duracion = 7
+        elif duracion == "Meses":
+            duracion = 30
+        else:
+            duracion = 365
+        diasgarantia = int(garantia) * duracion
+        fechaestimada = fechainicial.addDays(diasgarantia) 
+        return fechaestimada
     def cambiar(self,tipo):
         self.stackedW.setCurrentIndex(tipo)
     def cancelar(self):
@@ -85,17 +112,35 @@ class Registro_Hardware(QDialog):
     def guardar(self):
         posicion = self.stackedW.currentIndex()
         if posicion == 0:
-            self.mother()
+            if self.validar_Mother():
+                self.mother()
+            else:
+                QMessageBox.information(self,"Error","No pueden quedar campos vacios")
         elif posicion == 1:
-            self.ram()
+            if self.validar_Ram():
+                self.ram()
+            else:
+                QMessageBox.information(self,"Error","No pueden quedar campos vacios")
         elif posicion == 2:
-            self.cpu()
+            if self.validar_Cpu():
+                self.cpu()
+            else:
+                QMessageBox.information(self,"Error","No pueden quedar campos vacios")
         elif posicion == 3:
-            self.fuente()
+            if self.validar_Fuente():
+                self.fuente()
+            else:
+                QMessageBox.information(self,"Error","No pueden quedar campos vacios")
         elif posicion == 4:
-            self.case()
+            if self.validar_Case():
+                self.case()
+            else:
+                QMessageBox.information(self,"Error","No pueden quedar campos vacios")
         elif posicion == 5:
-            self.disco()
+            if self.validar_Disco():
+                self.disco()
+            else:
+                QMessageBox.information(self,"Error","No pueden quedar campos vacios")
     def actualizar(self,cod):
         posicion = self.stackedW.currentIndex()
         if posicion == 0:
@@ -119,7 +164,15 @@ class Registro_Hardware(QDialog):
         serie = self.Serie_Mother.text()
         video = self.Video_Mother.currentText()
         audio = self.Audio_Mother.currentText()
-        garantia = self.Garantia_Mother.text()
+        if self.checkBox_Mother.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Mother.text() != "":
+                garantia = self.calculargarantia(self.Fecha_Mother.date(),self.Garantia_Mother.text(),self.GarantiaBox_Mother.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Mother.date().toString()
         estado = "Sin Asignar"
         print(tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha,estado)
@@ -135,7 +188,15 @@ class Registro_Hardware(QDialog):
         capacidad = self.Capacidad_Ram.text()
         frecuencia = self.Frecuencia_Ram.text()
         serie = self.Serie_Ram.text()
-        garantia = self.Garantia_Ram.text()
+        if self.checkBox_Ram.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Ram.text()!= "":
+                garantia = self.calculargarantia(self.Fecha_Ram.date(),self.Garantia_Ram.text(),self.GarantiaBox_Ram.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Ram.date().toString()
         estado = "Sin Asignar"
         print(tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha,estado)
@@ -154,7 +215,15 @@ class Registro_Hardware(QDialog):
         socket = self.Socket_Cpu.text()
         cache = self.Cache_Cpu.text()
         serie = self.Serie_Cpu.text()
-        garantia = self.Garantia_Cpu.text()
+        if self.checkBox_Cpu.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Cpu.text() != "":
+                garantia = self.calculargarantia(self.Fecha_Cpu.date(),self.Garantia_Cpu.text(),self.GarantiaBox_Cpu.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Cpu.date().toString()
         estado = "Sin Asignar"
         print(tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha,estado)
@@ -169,7 +238,15 @@ class Registro_Hardware(QDialog):
         certificacion = self.Certificacion_Fuente.currentText()
         voltaje = self.Voltaje_Fuente.currentText()
         serie = self.Serie_Fuente.text()
-        garantia = self.Garantia_Fuente.text()
+        if self.checkBox_Fuente.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Fuente.text()!="":
+                garantia = self.calculargarantia(self.Fecha_Fuente.date(),self.Garantia_Fuente.text(),self.GarantiaBox_Fuente.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Fuente.date().toString()
         estado = "Sin Asignar"
         print(tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha,estado)
@@ -181,7 +258,15 @@ class Registro_Hardware(QDialog):
         marca = self.Marca_Case.text()
         modelo = self.Marca_Case.text()
         serie = self.Serie_Case.text()
-        garantia = self.Garantia_Case.text()
+        if self.checkBox_Case.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Case.text() !="":
+                garantia = self.calculargarantia(self.Fecha_Case.date(),self.Garantia_Case.text(),self.GarantiaBox_Case.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Case.date().toString()
         estado = "Sin Asignar"
         print(tipohard,marca,modelo,serie,garantia,fecha,estado)
@@ -197,7 +282,15 @@ class Registro_Hardware(QDialog):
         cache = self.Cache_Disco.text()
         buffer = self.Buffer_Disco.text()
         serie = self.Serie_Disco.text()
-        garantia = self.Garantia_Disco.text()
+        if self.checkBox_Disco.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Disco.text() != "" :
+                garantia = self.calculargarantia(self.Fecha_Disco.date(),self.Garantia_Disco.text(),self.GarantiaBox_Disco.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Disco.date().toString()
         estado = "Sin Asignar"
         print(tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha,estado)
@@ -215,7 +308,15 @@ class Registro_Hardware(QDialog):
         serie = self.Serie_Mother.text()
         video = self.Video_Mother.currentText()
         audio = self.Audio_Mother.currentText()
-        garantia = self.Garantia_Mother.text()
+        if self.checkBox_Mother.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Mother.text() != "":
+                garantia = self.calculargarantia(self.Fecha_Mother.date(),self.Garantia_Mother.text(),self.GarantiaBox_Mother.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Mother.date().toString()
         if modMother(cod,tipohard,marca,modelo,chipset,socket,serie,video,audio,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Motherboad Actualizada")
@@ -230,7 +331,15 @@ class Registro_Hardware(QDialog):
         capacidad = self.Capacidad_Ram.text()
         frecuencia = self.Frecuencia_Ram.text()
         serie = self.Serie_Ram.text()
-        garantia = self.Garantia_Ram.text()
+        if self.checkBox_Ram.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Ram.text()!= "":
+                garantia = self.calculargarantia(self.Fecha_Ram.date(),self.Garantia_Ram.text(),self.GarantiaBox_Ram.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Ram.date().toString()
         if modRam(cod,tipohard,marca,modelo,capacidad,frecuencia,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Ram Actualizada")
@@ -245,7 +354,15 @@ class Registro_Hardware(QDialog):
         socket = self.Socket_Cpu.text()
         cache = self.Cache_Cpu.text()
         serie = self.Serie_Cpu.text()
-        garantia = self.Garantia_Cpu.text()
+        if self.checkBox_Cpu.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Cpu.text() != "":
+                garantia = self.calculargarantia(self.Fecha_Cpu.date(),self.Garantia_Cpu.text(),self.GarantiaBox_Cpu.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Cpu.date().toString()   
         if modCPU(cod, tipohard,marca,modelo,nucleo,hilos,frecuencia,socket,cache,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Cpu Actualizado")
@@ -258,7 +375,15 @@ class Registro_Hardware(QDialog):
         certificacion = self.Certificacion_Fuente.currentText()
         voltaje = self.Voltaje_Fuente.currentText()
         serie = self.Serie_Fuente.text()
-        garantia = self.Garantia_Fuente.text()
+        if self.checkBox_Fuente.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Fuente.text()!="":
+                garantia = self.calculargarantia(self.Fecha_Fuente.date(),self.Garantia_Fuente.text(),self.GarantiaBox_Fuente.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Fuente.date().toString()
         if modFuente(cod, tipohard,marca,modelo,potencia,certificacion,voltaje,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Fuente Actualizado")
@@ -268,7 +393,15 @@ class Registro_Hardware(QDialog):
         marca = self.Marca_Case.text()
         modelo = self.Marca_Case.text()
         serie = self.Serie_Case.text()
-        garantia = self.Garantia_Case.text()
+        if self.checkBox_Case.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Case.text() !="":
+                garantia = self.calculargarantia(self.Fecha_Case.date(),self.Garantia_Case.text(),self.GarantiaBox_Case.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Case.date().toString()
         if modCase(cod, tipohard,marca,modelo,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Case Actualizado")
@@ -282,10 +415,83 @@ class Registro_Hardware(QDialog):
         cache = self.Cache_Disco.text()
         buffer = self.Buffer_Disco.text()
         serie = self.Serie_Disco.text()
-        garantia = self.Garantia_Disco.text()
+        if self.checkBox_Disco.isChecked():
+            garantia = "Sin Garantia"
+        else:
+            if self.Garantia_Disco.text() != "" :
+                garantia = self.calculargarantia(self.Fecha_Disco.date(),self.Garantia_Disco.text(),self.GarantiaBox_Disco.currentText())
+                garantia = garantia.toString()
+            else: 
+                QMessageBox.information(self,"Garantia","La Garantia no puede quedar vacia")
+                return False
         fecha = self.Fecha_Disco.date().toString()
         if modDisco(cod, tipohard,marca,modelo,capacidad,tipodisco,cache,buffer,serie,garantia,fecha):
             QMessageBox.information(self,"Actualizar","Disco Actualizado Correctamente")
             self.close()
 
-            
+#   Validaciones
+# 
+    def validar_Mother(self):
+        if self.Marca_Mother.text() != "" and self.Modelo_Mother.text()!="" and self.Chipset_Mother.text()!="" and self.Socket_Mother.text()!=""and self.Serie_Mother.text()!="":
+            return True
+        else:
+            return False
+    def validar_Ram(self):
+        if self.Marca_Ram.text()!="" and self.Modelo_Ram.text()!="" and self.Capacidad_Ram.text()!="" and self.Frecuencia_Ram.text()!="" and self.Serie_Ram.text()!="":
+            return True
+        else:
+            return False
+    def validar_Cpu(self):
+        if self.Marca_Cpu.text()!="" and self.Modelo_Cpu.text()!="" and self.Nucleos_Cpu.text()!="" and self.Hilos_Cpu.text()!="" and self.Frecuencia_Cpu.text()!="" and self.Socket_Cpu.text() !="" and self.Cache_Cpu.text()!="" and self.Serie_Cpu.text() !="":
+            return True
+        else:
+            return False
+    def validar_Fuente(self):
+        if self.Marca_Fuente.text()!="" and self.Modelo_Fuente.text()!="" and self.Potencia_Fuente.text()!="" and self.Serie_Fuente.text()!="":
+            return True
+        else:
+            return False
+    def validar_Case(self):
+            if self.Marca_Case.text()!="" and self.Modelo_Case.text()!="" and self.Serie_Case.text()!="" :
+                return True
+            else:
+                return False
+    def validar_Disco(self):
+        if self.Marca_Disco.text()!="" and self.Modelo_Disco.text()!="" and self.Capacidad_Disco.text()!="" and self.Cache_Disco.text()!="" and self.Buffer_Disco.text()!="" and self.Serie_Disco.text()!="":
+            return True
+        else:
+            return False
+    def cambiargarantia(self):
+        if self.checkBox_Mother.isChecked():
+            self.Garantia_Mother.setEnabled(False)
+            self.GarantiaBox_Mother.setEnabled(False)
+        elif self.checkBox_Ram.isChecked():
+            self.Garantia_Ram.setEnabled(False)
+            self.GarantiaBox_Ram.setEnabled(False)
+        elif self.checkBox_Cpu.isChecked():
+            self.Garantia_Cpu.setEnabled(False)
+            self.GarantiaBox_Cpu.setEnabled(False)
+        elif self.checkBox_Fuente.isChecked():
+            self.Garantia_Fuente.setEnabled(False)
+            self.GarantiaBox_Fuente.setEnabled(False)
+        elif self.checkBox_Case.isChecked():
+            self.Garantia_Case.setEnabled(False)
+            self.GarantiaBox_Case.setEnabled(False)
+        elif self.checkBox_Disco.isChecked():
+            self.Garantia_Disco.setEnabled(False)
+            self.GarantiaBox_Disco.setEnabled(False)
+        
+        else:
+            self.Garantia_Mother.setEnabled(True)
+            self.GarantiaBox_Mother.setEnabled(True)
+            self.Garantia_Ram.setEnabled(True)
+            self.GarantiaBox_Ram.setEnabled(True)
+            self.Garantia_Cpu.setEnabled(True)
+            self.GarantiaBox_Cpu.setEnabled(True)
+            self.Garantia_Fuente.setEnabled(True)
+            self.GarantiaBox_Fuente.setEnabled(True)
+            self.Garantia_Case.setEnabled(True)
+            self.GarantiaBox_Case.setEnabled(True)
+            self.Garantia_Disco.setEnabled(True)
+            self.GarantiaBox_Disco.setEnabled(True)
+

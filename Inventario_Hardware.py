@@ -1,5 +1,5 @@
 from time import strftime
-from PyQt5.QtGui import QIcon,QColor,QFont
+from PyQt5.QtGui import QIcon,QColor,QFont,QPixmap
 from PyQt5.QtWidgets import  QFileDialog, QInputDialog, QMainWindow, QWidget, QMessageBox,QDialog,QTableWidgetItem 
 from PyQt5.QtCore import QCoreApplication,QTimer,QElapsedTimer, QDate
 from PyQt5 import QtWidgets, uic
@@ -44,19 +44,24 @@ class Inventario_Hardware(QDialog):
         uic.loadUi('Inventario-Hardware.ui',self)
         self.setWindowTitle('Inventario Hardware')
         self.setWindowIcon(QIcon('icon.png'))
+        self.Logo.setPixmap(QPixmap("logo.jpg"))
         self.NuevoHardware.clicked.connect(self.nuevo_hardware)
         self.DetallesHardware.clicked.connect(self.detelle_hardware)
         self.EliminarHardware.clicked.connect(self.darbajahard)
         self.ModificarHardware.clicked.connect(self.modificar_hardware)
         self.cargarhard()
+        
     
     
 
     
             
-            
+    def redimensionarcabecera(self,tabla):
+        header = tabla.horizontalHeader()
+        header.setSectionResizeMode(QtWidgets.QHeaderView.ResizeToContents)     #ResizeToContents  
+        header.setSectionResizeMode(0, QtWidgets.QHeaderView.Interactive)   #Stretch
     def modificar_hardware(self):
-        if self.TablaHardware.currentRow() != -1:
+        if self.validarseleccion():
             self.det = Registro_Hardware()
             self.det.setWindowTitle('Modificar Hardware')
             self.det.Modificar.setEnabled(True)
@@ -147,9 +152,10 @@ class Inventario_Hardware(QDialog):
             
             self.cargarhard()     
     def detelle_hardware(self):
-        if self.TablaHardware.currentRow() != -1:
+        if self.validarseleccion():
             self.det = Registro_Hardware()
             self.det.setWindowTitle('Detalle Hardware')
+            self.det.Exportar.setEnabled(True)
             tipohard = self.TablaHardware.item(self.TablaHardware.currentRow(),2).text()
             cod = self.TablaHardware.item(self.TablaHardware.currentRow(),0).text()
             cursor = Cursor()
@@ -261,13 +267,16 @@ class Inventario_Hardware(QDialog):
         cursor.execute("SELECT * FROM Motherboard")
         listado = cursor.fetchall()
         self.TablaHardware.setRowCount(0)
+        self.redimensionarcabecera(self.TablaHardware)
         for fila in listado:
             self.TablaHardware.insertRow(self.TablaHardware.rowCount())
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,0,QTableWidgetItem(str(fila[0])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,2,QTableWidgetItem(str(fila[10])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,3,QTableWidgetItem(str(fila[5])))
-            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[11])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[9])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,5,QTableWidgetItem(str(fila[8])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,6,QTableWidgetItem(str(fila[11])))
         cursor.execute("SELECT * FROM Ram")
         listado = cursor.fetchall()
         for fila in listado:
@@ -276,7 +285,9 @@ class Inventario_Hardware(QDialog):
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,2,QTableWidgetItem(str(fila[8])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,3,QTableWidgetItem(str(fila[5])))
-            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[9])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[7])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,5,QTableWidgetItem(str(fila[6])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,6,QTableWidgetItem(str(fila[9])))
         cursor.execute("SELECT * FROM Cpu")
         listado = cursor.fetchall()
         for fila in listado:
@@ -285,7 +296,9 @@ class Inventario_Hardware(QDialog):
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,2,QTableWidgetItem(str(fila[11])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,3,QTableWidgetItem(str(fila[8])))
-            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[12])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[10])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,5,QTableWidgetItem(str(fila[9])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,6,QTableWidgetItem(str(fila[12])))
         cursor.execute("SELECT * FROM Fuente")
         listado = cursor.fetchall()
         for fila in listado:
@@ -294,7 +307,9 @@ class Inventario_Hardware(QDialog):
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,2,QTableWidgetItem(str(fila[9])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,3,QTableWidgetItem(str(fila[6])))
-            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[10])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[8])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,5,QTableWidgetItem(str(fila[7])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,6,QTableWidgetItem(str(fila[10])))
         cursor.execute("SELECT * FROM 'Case'")
         listado = cursor.fetchall()
         for fila in listado:
@@ -303,7 +318,9 @@ class Inventario_Hardware(QDialog):
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,2,QTableWidgetItem(str(fila[6])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,3,QTableWidgetItem(str(fila[3])))
-            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[7])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[5])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,5,QTableWidgetItem(str(fila[4])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,6,QTableWidgetItem(str(fila[7])))
         cursor.execute("SELECT * FROM Disco")
         listado = cursor.fetchall()
         for fila in listado:
@@ -312,9 +329,11 @@ class Inventario_Hardware(QDialog):
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,1,QTableWidgetItem(str(fila[1]+"-"+fila[2])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,2,QTableWidgetItem(str(fila[10])))
             self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,3,QTableWidgetItem(str(fila[7])))
-            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[11])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,4,QTableWidgetItem(str(fila[9])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,5,QTableWidgetItem(str(fila[8])))
+            self.TablaHardware.setItem(self.TablaHardware.rowCount()-1,6,QTableWidgetItem(str(fila[11])))
     def darbajahard(self):
-        if self.TablaHardware.currentRow() != -1:
+        if self.validarseleccion():
             if QMessageBox.question(self,"Esta seguro ?","Esta seguro que desea eliminar el hardware seleccionado?",QMessageBox.Yes|QMessageBox.No,QMessageBox.No) == QMessageBox.Yes:
                 tipohard = self.TablaHardware.item(self.TablaHardware.currentRow(),2).text()
                 if tipohard == "Motherboard":
@@ -354,3 +373,9 @@ class Inventario_Hardware(QDialog):
                     cursor.commit()
                     cursor.close()
         self.cargarhard()
+    def validarseleccion(self):
+        if self.TablaHardware.currentRow() != -1:
+            return True
+        else:
+            QMessageBox.information(self,"Error de Seleccion","Debe seleccionar un elemento de la Tabla")
+            return False

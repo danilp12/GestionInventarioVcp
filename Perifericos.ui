@@ -14,10 +14,9 @@
    <string>Dialog</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">
-QDialog{
+   <string notr="true">QDialog{
     color: rgba(255, 255, 255, 10) ;
-	background-color: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 85, 0, 255), stop:1 rgba(255, 170, 0, 255));
+	background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(255, 121, 14, 255), stop:1 rgba(80, 35, 46, 255));
 	opacity:80;
 	position: relative;
     background-position: center;
@@ -25,10 +24,41 @@ QDialog{
     
 }
 QPushButton {
- background-color: white;
- color: black;
-font-family:Bodoni MT;
+ background-color: qlineargradient(spread:pad, x0:0, y0:2, x2:0, y2:1.1, stop:0 rgba(255, 121, 14, 255), stop:1 rgba(80, 35, 46, 255));
+ color: white;
+font-family:Epitet-SemiBold;
 font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Hover {
+ background-color: rgb(255, 121, 14);
+ color: red;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:Pressed {
+ background-color: rgb(80, 35, 46);
+ color: black;
+font-family:Epitet-SemiBold;
+font-size: 16px;
+margin:2px;
+ border-radius:10px;
+}
+QPushButton:disabled{
+	border-style: outset;
+	border-width: 2px;
+	border-top-color: qlineargradient(spread:pad, x1:0.5, y1:0.6, x2:0.5, y2:0.4, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-right-color: qlineargradient(spread:pad, x1:0.4, y1:0.5, x2:0.6, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-left-color: qlineargradient(spread:pad, x1:0.6, y1:0.5, x2:0.4, y2:0.5, stop:0 rgba(115, 115, 115, 255), stop:1 rgba(62, 62, 62, 255));
+	border-bottom-color: rgb(58, 58, 58);
+	border-bottom-width: 1px;
+	border-style: solid;
+	color: rgb(0, 0, 0);
+	padding: 2px;
+	background-color: qlineargradient(spread:pad, x1:0.5, y1:1, x2:0.5, y2:0, stop:0 rgba(57, 57, 57, 255), stop:1 rgba(77, 77, 77, 255));
 }</string>
   </property>
   <widget class="QLabel" name="label">
@@ -187,7 +217,7 @@ font-size: 16px;
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>
@@ -206,7 +236,7 @@ font-size: 16px;
    </property>
    <property name="font">
     <font>
-     <family>Bodoni MT</family>
+     <family>Epitet-SemiBold</family>
      <pointsize>-1</pointsize>
     </font>
    </property>

@@ -4,6 +4,10 @@ from datetime import datetime as dt
 from statistics import mode
 from PyQt5.QtCore import QDate
 
+
+# Aca definimos todas las funciones relacionadas con la base de datos
+
+
 def conexion():
     conexion = sqlite3.connect('Inventario.db')
     return conexion
